@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// 
+// Dit zijn de routes die automatisch zijn aangemaakt wanneer je 'php artisan make:auth' deed
+// 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 // 
 // Hiero wordt rechtstreeks een view opgehaald bij 'http://portfolioworkshop.local/contact'
 // De view staat in 'resources/views' als 'contact.blade.php'
@@ -28,6 +35,3 @@ Route::get('/contact', function () {
 // De controller is te vinden in 'app/Http/Controller' als 'PortfolioController.php'
 // 
 Route::get('/portfolio', 'PortfolioController@index');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
