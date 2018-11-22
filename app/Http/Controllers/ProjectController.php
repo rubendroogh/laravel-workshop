@@ -17,4 +17,24 @@ class ProjectController extends Controller
     	$project = Project::findOrFail($id);
     	return view('project', ['project' => $project]);
     }
+
+    public function create_project_form(){
+
+    }
+
+    public function create(){
+        
+    }
+
+    public function update_project_form(){
+        
+    }
+
+    public function update(){
+        
+    }
+
+    public function delete(){
+        
+    }
 }
