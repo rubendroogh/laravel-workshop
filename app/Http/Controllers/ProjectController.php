@@ -12,7 +12,7 @@ class ProjectController extends Controller
     	$projects = Project::all();
     	return view('projects', ['projects' => $projects]);
     }
-
+    
     public function read($id){
     	$project = Project::findOrFail($id);
     	return view('project', ['project' => $project]);

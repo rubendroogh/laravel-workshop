@@ -29,16 +29,13 @@ Route::get('projects', 'ProjectController@index')->name('projects');
 // 1 project
 Route::get('projects/{id}', 'ProjectController@read')->name('project');
 
-// Group van routes, waarvoor je ingelogd moet zijn (de auth middleware)
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
-    // Haal het formulier op waarmee je projecten aanmaakt
-    Route::get('projects/create', 'ProjectController@create_project_form')->name('create_project_form');
-    // Maak het project aan in de database
-    Route::post('projects/create', 'ProjectController@create')->name('create');
-    // Haal het formulier op waarmee je projecten update
-    Route::get('project/{id}/update', 'ProjectController@update_project_form')->name('update_project_form');
-    // Update een bestaand project
-    Route::put('project/update', 'ProjectController@update')->name('update');
-    // Verwijder een project
-    Route::delete('project/delete', 'ProjectController@delete')->name('delete');
-});
+// Haal het formulier op waarmee je projecten aanmaakt
+Route::get('projects/create', 'ProjectController@create_project_form')->name('create_project_form');
+// Maak het project aan in de database
+Route::post('projects/create', 'ProjectController@create')->name('create');
+// Haal het formulier op waarmee je projecten update
+Route::get('project/{id}/update', 'ProjectController@update_project_form')->name('update_project_form');
+// Update een bestaand project
+Route::put('project/update', 'ProjectController@update')->name('update');
+// Verwijder een project
+Route::delete('project/delete', 'ProjectController@delete')->name('delete');
