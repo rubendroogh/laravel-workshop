@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 use App\Project;
 
 class ProjectController extends Controller
 {
     public function index(){
-    	$projects = Project::all();
-    	return view('projects', ['projects' => $projects]);
+
+    	return view('projects');
+    }
+
+    public function get_all_projects() {
+        return Project::all();
     }
     
     public function read($id){
@@ -22,9 +27,17 @@ class ProjectController extends Controller
 
     }
 
-    public function create(){
-        
+    public function create(Request $request){
+        $project = Project::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => 1,
+            'slug' => str_slug($request->title, '-'),
+        ]);
+
+        return $project->id;
     }
+
 
     public function update_project_form(){
         
@@ -34,7 +47,7 @@ class ProjectController extends Controller
         
     }
 
-    public function delete(){
-        
+    public function delete(Request $request){
+        Project::find($request->id)->delete();
     }
 }
